@@ -7,14 +7,14 @@ import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.ui.graphics.vector.ImageVector
 
-sealed class BottomItem(var name: String, var route: String, var icon: ImageVector) {
-    object screen1 : BottomItem(name = "home", route = "home_screen", icon = Icons.Default.Home)
+sealed class BottomNavbarItems(var name: String, var route: String, var icon: ImageVector) {
+    object screen1 : BottomNavbarItems(name = "home", route = "home_screen", icon = Icons.Default.Home)
 
-    object screen2 : BottomItem(name = "azs", route = "azs_screen", icon = Icons.Default.LocationOn)
+    object screen2 : BottomNavbarItems(name = "azs", route = "azs_screen", icon = Icons.Default.LocationOn)
 
     object screen3 :
-        BottomItem(name = "promos", route = "promos_screen", icon = Icons.Default.FavoriteBorder)
+        BottomNavbarItems(name = "promos", route = "promos_screen", icon = Icons.Default.FavoriteBorder)
 
     object screen4 :
-        BottomItem(name = "more", route = "more_screen", icon = Icons.Default.MoreVert)
+        BottomNavbarItems(name = "more", route = "more_screen", icon = Icons.Default.MoreVert)
 }
