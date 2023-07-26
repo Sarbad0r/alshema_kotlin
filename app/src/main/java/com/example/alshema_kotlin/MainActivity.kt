@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -14,7 +15,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.alshema_kotlin.pages.bottom_nav_bar.BottomNavbarGraph
 import com.example.alshema_kotlin.pages.bottom_nav_bar.BottomNavigationBar
-import com.example.alshema_kotlin.ui.theme.Alshema_kotlinTheme
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +31,9 @@ class MainActivity : ComponentActivity() {
 fun MainApp() {
     val navController: NavHostController = rememberNavController();
     Scaffold(
-        bottomBar = { BottomNavigationBar(navController = navController) }) {
+        bottomBar = { BottomNavigationBar(navController = navController) },
+    ) {
         BottomNavbarGraph(navController = navController)
+
     }
 }

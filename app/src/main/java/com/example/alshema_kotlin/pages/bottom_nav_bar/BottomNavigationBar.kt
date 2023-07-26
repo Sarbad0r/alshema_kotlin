@@ -6,19 +6,22 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.alshema_kotlin.ui.theme.black54
+import com.example.alshema_kotlin.ui.theme.mainAppColor
 
 @Composable
 fun BottomNavigationBar(navController: NavHostController) {
-    var screenItems = listOf(
+    val screenItems = listOf(
         BottomNavbarItems.screen1,
         BottomNavbarItems.screen2,
         BottomNavbarItems.screen3,
         BottomNavbarItems.screen4,
     );
-    BottomNavigation() {
+    BottomNavigation(backgroundColor = Color.White) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
         screenItems.forEach { item ->
@@ -40,7 +43,10 @@ fun BottomNavigationBar(navController: NavHostController) {
                 },
                 icon = {
                     Icon(imageVector = item.icon, contentDescription = item.name)
-                }, label = { Text(text = item.name) })
+                },
+                label = { Text(text = item.name) },
+                selectedContentColor = mainAppColor,
+                unselectedContentColor = black54)
         }
     }
 }
