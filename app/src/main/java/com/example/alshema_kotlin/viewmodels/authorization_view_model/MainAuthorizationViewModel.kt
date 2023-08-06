@@ -9,5 +9,14 @@ class MainAuthorizationViewModel : ViewModel() {
     var authState: MutableState<MainAuthorizationData> = _authState
 
 
+    fun changingTextOfTextField(text: String) {
+        var state = _authState.value.textFieldState;
+        if (state.length < 9){
+            _authState.value = authState.value.copy(textFieldState = text)
+            var another = _authState.value.textFieldState;
+            _authState.value = authState.value.copy(isFilledTextField = another.length >= 9)
+            println("state is : $another");
+        }
 
+    }
 }
