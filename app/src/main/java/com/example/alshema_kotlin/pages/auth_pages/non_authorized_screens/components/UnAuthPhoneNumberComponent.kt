@@ -2,6 +2,7 @@ package com.example.alshema_kotlin.pages.auth_pages.non_authorized_screens.compo
 
 import android.widget.Space
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.shape.ZeroCornerSize
@@ -13,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,9 +30,9 @@ import com.example.alshema_kotlin.viewmodels.authorization_view_model.MainAuthor
 fun UnAuthPhoneNumberComponent(
     viewModel: MainAuthorizationViewModel = viewModel(),
 ) {
-    var mainState = viewModel.authState;
+    val mainState = viewModel.authState;
 
-    var buttonGoBackGround = if (mainState.value.isFilledTextField) {
+    val buttonGoBackGround = if (mainState.value.isFilledTextField) {
         mainAppColorAccent
     } else {
         Color.Gray;
@@ -75,7 +77,13 @@ fun UnAuthPhoneNumberComponent(
                             .background(color = Color.Transparent)
                             .fillMaxWidth()
                             .weight(0.5f)
-                            .padding(0.dp))
+                            .padding(0.dp)
+                            .pointerInput(Unit) {
+                                detectTapGestures {
+                                    println("working remove");
+                                    viewModel.removeAllSymbolsAndPutDotsToTextField()
+                                }
+                            })
                     Spacer(modifier = Modifier.width(10.dp))
 
                     Box(contentAlignment = Alignment.Center,
