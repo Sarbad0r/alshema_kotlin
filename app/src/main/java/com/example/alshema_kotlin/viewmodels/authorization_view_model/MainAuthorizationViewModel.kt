@@ -11,7 +11,7 @@ class MainAuthorizationViewModel : ViewModel() {
 
 
     fun changingTextOfTextField(text: String) {
-        var state = _authState.value.textFieldState;
+        val state = _authState.value.textFieldState;
         if (state.length < 9) {
             _authState.value = authState.value.copy(textFieldState = text)
             var another = _authState.value.textFieldState;
